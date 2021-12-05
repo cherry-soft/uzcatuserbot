@@ -104,21 +104,20 @@ async def bot_start(event):
             )
         else:
             start_msg = f"Hey! 👤{mention},\
-                        \nI am {my_mention}'s assistant bot.\
-                        \nYou can contact to my master from here.\
-                        \n\nPowered by [Catuserbot](https://t.me/catuserbot)"
+                        \nSalom, men {my_mention}ning avto javob bergich botiman.\
+                        \nBu yerga yozganlaringizni ho'jayinga yetkazib turaman."
         buttons = [
             (
-                Button.url("Repo", "https://github.com/sandy1709/catuserbot"),
+                Button.url("Manba", "https://github.com/cherry-soft/uzcatuserbot"),
                 Button.url(
-                    "Deploy",
-                    "https://dashboard.heroku.com/new?button-url=https%3A%2F%2Fgithub.com%2FMr-confused%2Fcatpack&template=https%3A%2F%2Fgithub.com%2FMr-confused%2Fcatpack",
+                    "O'rnatib olish",
+                    "https://dashboard.heroku.com/new?button-url=https%3A%2F%2Fgithub.com%2Fcherry-soft%2Fuzcatuserbot-heroku&template=https%3A%2F%2Fgithub.com%2Fcherry-soft%2Fuzcatuserbot-heroku",
                 ),
             )
         ]
     else:
-        start_msg = "Hey Master!\
-            \nHow can i help you ?"
+        start_msg = "Salom ho'jayin!\
+            \nSizga qanday yordamim tegadi ?"
         buttons = None
     try:
         await event.client.send_message(
@@ -213,7 +212,7 @@ async def bot_pms_edit(event):  # sourcery no-metrics
         if reply_msg:
             await event.client.send_message(
                 Config.OWNER_ID,
-                f"⬆️ **This message was edited by the user** {_format.mentionuser(get_display_name(chat) , chat.id)} as :",
+                f"⬆️ **Bu xabarni foydalanuvchi tahrirladi** {_format.mentionuser(get_display_name(chat) , chat.id)} as :",
                 reply_to=reply_msg,
             )
             msg = await event.forward_to(Config.OWNER_ID)
@@ -283,7 +282,7 @@ async def handler(event):
                         return
                     await event.client.send_message(
                         Config.OWNER_ID,
-                        f"⬆️ **This message was deleted by the user** {_format.mentionuser(user_name , user_id)}.",
+                        f"⬆️ **Foydalanuvchi bu xabarini o'chirib tashladi** {_format.mentionuser(user_name , user_id)}.",
                         reply_to=reply_msg,
                     )
             except Exception as e:
@@ -294,16 +293,16 @@ async def handler(event):
 async def bot_start(event):
     reply_to = await reply_id(event)
     if not reply_to:
-        return await event.reply("Reply to a message to get message info")
+        return await event.reply("Ma'lumot olish uchun biror xabarga reply qiling")
     info_msg = await event.client.send_message(
         event.chat_id,
-        "`🔎 Searching for this user in my database ...`",
+        "`🔎 Databazadan ushbu foydalanuvchi qidirilmoqda ...`",
         reply_to=reply_to,
     )
     users = get_user_id(reply_to)
     if users is None:
         return await info_msg.edit(
-            "**ERROR:** \n`Sorry !, Can't Find this user in my database :(`"
+            "**ERROR:** \n`Uzr, bazadan bunday foydalanuvchini topolmadim :(`"
         )
     for usr in users:
         user_id = int(usr.chat_id)
@@ -311,11 +310,11 @@ async def bot_start(event):
         break
     if user_id is None:
         return await info_msg.edit(
-            "**ERROR:** \n`Sorry !, Can't Find this user in my database :(`"
+            "**ERROR:** \n`Uzr, bazadan bu foydalanuvchini topolmadim :(`"
         )
-    uinfo = f"This message was sent by 👤 {_format.mentionuser(user_name , user_id)}\
-            \n**First Name:** {user_name}\
-            \n**User ID:** `{user_id}`"
+    uinfo = f"Bu xabar 👤 {_format.mentionuser(user_name , user_id)} tomonidan yuborildi\
+            \n**Ismi:** {user_name}\
+            \n**IDsi:** `{user_id}`"
     await info_msg.edit(uinfo)
 
 
