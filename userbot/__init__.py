@@ -20,10 +20,10 @@ bot = catub
 StartTime = time.time()
 catversion = "3.0.4"
 
-if Config.UPSTREAM_REPO == "badcat":
+if Config.UPSTREAM_REPO == "uzbek":
     UPSTREAM_REPO_URL = "https://github.com/cherry-soft/uzcatuserbot"
-elif Config.UPSTREAM_REPO == "goodcat":
-    UPSTREAM_REPO_URL = "https://github.com/cherry-soft/uzcatuserbot"
+elif Config.UPSTREAM_REPO == "english":
+    UPSTREAM_REPO_URL = "https://github.com/cherry-soft/catuserbot"
 else:
     UPSTREAM_REPO_URL = Config.UPSTREAM_REPO
 
