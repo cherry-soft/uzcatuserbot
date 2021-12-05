@@ -48,10 +48,10 @@ async def startup_process():
     await load_plugins("plugins")
     await load_plugins("assistant")
     print("➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖")
-    print("Yay your userbot is officially working.!!!")
+    print("Ajoyib, Botingiz muvaffaqiyatli ishga tushdi!!!")
     print(
-        f"Congratulation, now type {cmdhr}alive to see message if catub is live\
-        \nIf you need assistance, head to https://t.me/catuserbot_support"
+        f"Tabriklaymiz. Endi {cmdhr}alive komandasini berib botni tekshirib oling\
+        \nYordam kerak bo'lsa https://t.me/uzcatusebot_support"
     )
     print("➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖")
     await verifyLoggerGroup()
