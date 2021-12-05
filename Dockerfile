@@ -1,7 +1,7 @@
-FROM sandy1709/catuserbot:slim-buster
+FROM cherry-soft/uzcatuserbot:slim-buster
 
 #clonning repo 
-RUN git clone https://github.com/sandy1709/catuserbot.git /root/userbot
+RUN git clone https://github.com/cherry-soft/uzcatuserbot.git /root/userbot
 #working directory 
 WORKDIR /root/userbot
 
