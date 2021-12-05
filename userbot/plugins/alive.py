@@ -40,12 +40,12 @@ async def amireallyalive(event):
     reply_to_id = await reply_id(event)
     uptime = await get_readable_time((time.time() - StartTime))
     start = datetime.now()
-    catevent = await edit_or_reply(event, "`Checking...`")
+    catevent = await edit_or_reply(event, "`Tekshirilmoqda...`")
     end = datetime.now()
     ms = (end - start).microseconds / 1000
     _, check_sgnirts = check_data_base_heal_th()
     EMOJI = gvarstatus("ALIVE_EMOJI") or "  ✥ "
-    ALIVE_TEXT = gvarstatus("ALIVE_TEXT") or "**✮ MY BOT IS RUNNING SUCCESSFULLY ✮**"
+    ALIVE_TEXT = gvarstatus("ALIVE_TEXT") or "**✮ UzCatUserBot ishlayapti ✮**"
     CAT_IMG = gvarstatus("ALIVE_PIC")
     cat_caption = gvarstatus("ALIVE_TEMPLATE") or temp
     caption = cat_caption.format(
@@ -80,19 +80,19 @@ async def amireallyalive(event):
 
 
 temp = """{ALIVE_TEXT}
-**{EMOJI} Database :** `{dbhealth}`
-**{EMOJI} Telethon Version :** `{telever}`
-**{EMOJI} Catuserbot Version :** `{catver}`
-**{EMOJI} Python Version :** `{pyver}`
-**{EMOJI} Uptime :** `{uptime}`
-**{EMOJI} Master:** {mention}"""
+**{EMOJI} Databaza :** `{dbhealth}`
+**{EMOJI} Telethon Versiyasi :** `{telever}`
+**{EMOJI} Catuserbot Versiyasi :** `{catver}`
+**{EMOJI} Python Versiyasi :** `{pyver}`
+**{EMOJI} Ishlab turgan vaqti :** `{uptime}`
+**{EMOJI} Bot foydalanuvchisi:** {mention}"""
 
 
 @catub.cat_cmd(
     pattern="ialive$",
     command=("ialive", plugin_category),
     info={
-        "header": "To check bot's alive status via inline mode",
+        "header": "Inline mode yordamida bot faolligini tekshirish",
         "options": "To show media in this cmd you need to set ALIVE_PIC with media link, get this by replying the media by .tgm",
         "usage": [
             "{tr}ialive",
@@ -108,7 +108,7 @@ async def amireallyalive(event):
     cat_caption += f"**{EMOJI} Telethon version :** `{version.__version__}\n`"
     cat_caption += f"**{EMOJI} Catuserbot Version :** `{catversion}`\n"
     cat_caption += f"**{EMOJI} Python Version :** `{python_version()}\n`"
-    cat_caption += f"**{EMOJI} Master:** {mention}\n"
+    cat_caption += f"**{EMOJI} Foydalanuvchi:** {mention}\n"
     results = await event.client.inline_query(Config.TG_BOT_USERNAME, cat_caption)
     await results[0].click(event.chat_id, reply_to=reply_to_id, hide_via=True)
     await event.delete()
