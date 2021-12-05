@@ -184,11 +184,11 @@ async def set_default_city(event):
     pattern="weather(?:\s|$)([\s\S]*)",
     command=("weather", plugin_category),
     info={
-        "header": "To get the weather report of a city.",
-        "description": "Shows you the weather report of a city . By default it is Delhi, you can change it by {tr}setcity command.",
+        "header": "Ob-havo ma'lumoti.",
+        "description": "Birlamchi Toshkent belgilangan, uni {tr}setcity komandasi orqali o'zgartira olasiz .",
         "usage": [
             "{tr}weather",
-            "{tr}weather <city name>",
+            "{tr}weather <Shahar nomi>",
         ],
     },
 )
@@ -218,7 +218,7 @@ async def _(event):
     reply_to_id = await reply_id(event)
     input_str = event.pattern_match.group(1)
     if not input_str:
-        input_str = gvarstatus("DEFCITY") or "Delhi"
+        input_str = gvarstatus("DEFCITY") or "Tashkent"
     async with aiohttp.ClientSession() as session:
         sample_url = "https://wttr.in/{}.png"
         response_api_zero = await session.get(sample_url.format(input_str))
