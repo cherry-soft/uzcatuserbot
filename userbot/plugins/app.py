@@ -16,15 +16,15 @@ plugin_category = "utils"
     pattern="app ([\s\S]*)",
     command=("app", plugin_category),
     info={
-        "header": "To search any app in playstore",
-        "description": "Searches the app in the playstore and provides the link to the app in playstore and fetchs app details",
-        "usage": "{tr}app <name>",
+        "header": "Play Marketdan dastur qidirish",
+        "description": "Play Marketdan bir yoki bir nechta so'zlar bilan dastur qidirtira olasiz",
+        "usage": "{tr}app <dastur nomi>",
     },
 )
 async def app_search(event):
-    "To search any app in playstore."
+    "Play Marketdan narsa qidirish."
     app_name = event.pattern_match.group(1)
-    event = await edit_or_reply(event, "`Searching!..`")
+    event = await edit_or_reply(event, "`Qidirilyapti!..`")
     try:
         remove_space = app_name.split(" ")
         final_name = "+".join(remove_space)
@@ -64,13 +64,13 @@ async def app_search(event):
         app_details = "<a href='" + app_icon + "'>📲&#8203;</a>"
         app_details += " <b>" + app_name + "</b>"
         app_details += (
-            "\n\n<code>Developer :</code> <a href='"
+            "\n\n<code>Dasturchisi :</code> <a href='"
             + app_dev_link
             + "'>"
             + app_dev
             + "</a>"
         )
-        app_details += "\n<code>Rating :</code> " + app_rating.replace(
+        app_details += "\n<code>Reytingi :</code> " + app_rating.replace(
             "Rated ", "⭐ "
         ).replace(" out of ", "/").replace(" stars", "", 1).replace(
             " stars", "⭐ "
@@ -78,9 +78,9 @@ async def app_search(event):
             "five", "5"
         )
         app_details += (
-            "\n<code>Features :</code> <a href='"
+            "\n<code>Hususiyatlari :</code> <a href='"
             + app_link
-            + "'>View in Play Store</a>"
+            + "'>Play Marketda ko'rish</a>"
         )
         app_details += f"\n\n===> {ALIVE_NAME} <==="
         await event.edit(app_details, link_preview=True, parse_mode="HTML")
