@@ -23,7 +23,7 @@ plugin_category = "extra"
 async def get_adzan(adzan):
     "Shows you the Islamic prayer times of the given city name"
     input_str = adzan.pattern_match.group(1)
-    LOKASI = gvarstatus("DEFCITY") or "Delhi" if not input_str else input_str
+    LOKASI = gvarstatus("DEFCITY") or "Tashkent" if not input_str else input_str
     url = f"http://muslimsalat.com/{LOKASI}.json?key=bd099c5825cbedb9aa934e255a81a5fc"
     request = requests.get(url)
     if request.status_code != 200:
@@ -32,14 +32,14 @@ async def get_adzan(adzan):
         )
     result = json.loads(request.text)
     catresult = f"<b>Islamic prayer times </b>\
-            \n\n<b>City     : </b><i>{result['query']}</i>\
-            \n<b>Country  : </b><i>{result['country']}</i>\
-            \n<b>Date     : </b><i>{result['items'][0]['date_for']}</i>\
-            \n<b>Fajr     : </b><i>{result['items'][0]['fajr']}</i>\
-            \n<b>Shurooq    : </b><i>{result['items'][0]['shurooq']}</i>\
-            \n<b>Dhuhr    : </b><i>{result['items'][0]['dhuhr']}</i>\
+            \n\n<b>Shahar     : </b><i>{result['query']}</i>\
+            \n<b>Mamlakat  : </b><i>{result['country']}</i>\
+            \n<b>Sana     : </b><i>{result['items'][0]['date_for']}</i>\
+            \n<b>Bomdod     : </b><i>{result['items'][0]['fajr']}</i>\
+            \n<b>Kun chiqishi    : </b><i>{result['items'][0]['shurooq']}</i>\
+            \n<b>Peshin    : </b><i>{result['items'][0]['dhuhr']}</i>\
             \n<b>Asr    : </b><i>{result['items'][0]['asr']}</i>\
-            \n<b>Maghrib    : </b><i>{result['items'][0]['maghrib']}</i>\
-            \n<b>Isha     : </b><i>{result['items'][0]['isha']}</i>\
+            \n<b>Shom    : </b><i>{result['items'][0]['maghrib']}</i>\
+            \n<b>Hufton     : </b><i>{result['items'][0]['isha']}</i>\
     "
     await edit_or_reply(adzan, catresult, "html")
